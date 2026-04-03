@@ -15,6 +15,8 @@
     --bg: #0f172a;
 }
 
+/* Containers */
+
 .container {
     background: var(--background-color2);
     color: var(--primary-text-color);
@@ -36,10 +38,30 @@
     text-align: center;
 }
 
+
+/* Header Section */
+
 h1 {
     font-size: 3.5rem;
     margin-bottom: 3.5rem;
+    background: linear-gradient(to right, var(--app-color2), var(--primary-color), var(--hover-color)); /* Define your colors */
+    -webkit-background-clip: text; /* Clips the background to the text */
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
+
+h1:hover {
+    animation:color-cycle 3s infinite;
+}
+
+@keyframes color-cycle {
+  0%   { color: var(--app-color1); }
+  33%  { color: var(--app-color2); }
+  66%  { color: var(--hover-color); }
+  100% { color: var(--primary-color); }
+}
+
 
 h2 {
     font-size: 2.7rem;
@@ -60,6 +82,5 @@ h2 {
 .stats span {
     color: var(--primary-color);
 }
-
 
 
