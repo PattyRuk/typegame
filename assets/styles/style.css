@@ -52,7 +52,7 @@ h1 {
 }
 
 h1:hover {
-    animation:color-cycle 3s infinite;
+    animation:color-cycle 2s infinite;
 }
 
 @keyframes color-cycle {
@@ -82,5 +82,12 @@ h2 {
 .stats span {
     color: var(--primary-color);
 }
+
+.word-display {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    min-height: 80px;
+}
+
 
 
