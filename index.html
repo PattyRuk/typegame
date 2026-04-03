@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="An online game">
-    <link rel="icon" href="./assets/media/fire-flame-simple-solid.png" type="image/x-icon" />
+    <link rel="icon" href="./assets/media/keyboard-solid.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/styles/style.css"/>
     <title>Typing Game</title>
     <script src="./assets/script/app.js" defer></script>
 </head>
 <body class="container">
-    <h1><i class="fa-regular fa-keyboard"></i>The Typing Game</h1>
+    <h1><i class="fa-regular fa-keyboard"></i> The Fastest Typing Game</h1>
     <div class="game-container">
-        <label>Timer:</label>
-        <div class="timer" id="time">00:00</div>
-        <div class="random-text" id="text"></div>
-        <div><input type="text" class="input-text" id="input-text"></div>
-        <label>Score:</label>
-        <div class="score" id="score">0</div>
-        <input type="button" class="reset-btn" id="reset">
+        <h2>Type-Tester 9999</h2>
+        <div class="stats">
+            <div>Time: <span id="timer">99</span> s</div>
+            <div>SCORE: <span id="score">0</span></div>
+            <div>Words: <span id="wordCount">0</span> / <span id="totalWords">0</span></div>
+        </div>
+        <div class="word-display" id="wordDisplay"></div>
+        <div><input type="text" class="word-input" id="wordInput"></div>
+        <button id="resetBtn" class="reset-btn">RESET GAME</button>    
     </div>
 </body>
 </html>
