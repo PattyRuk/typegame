@@ -3,13 +3,13 @@
 
 :root {
     --primary-text-color: #fff;
+    --secondary-text-color: #94a3b8;
     --background-color: #1c1c4c;
     --background-color2: #130339;
     --app-color1:  #09637E;
     --app-color2: #088395;
-    --app-color3: #fe2701;
-    --app-color6: #00f5ff;
-    --primary: #6366f1;
+    --hover-color: #00f5ff;
+    --primary-color: #6366f1;
     --success: #22c55e;
     --error: #ef4444;
     --bg: #0f172a;
@@ -41,6 +41,25 @@ h1 {
     margin-bottom: 3.5rem;
 }
 
+h2 {
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: var(--secondary-text-color);
+}
+
+.stats span {
+    color: var(--primary-color);
+}
 
 
 
