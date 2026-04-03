@@ -44,14 +44,14 @@
 h1 {
     font-size: 3.5rem;
     margin-bottom: 3.5rem;
-    background: linear-gradient(to right, var(--app-color2), var(--primary-color), var(--hover-color)); /* Define your colors */
+    background: linear-gradient(to right, var(--app-color2), var(--primary-color), var(--hover-color)); 
     -webkit-background-clip: text; /* Clips the background to the text */
     background-clip: text;
     color: transparent;
     text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
 
-h1:hover {
+h1:hover, h2:hover {
     animation:color-cycle 2s infinite;
 }
 
