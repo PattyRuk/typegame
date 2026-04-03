@@ -6,6 +6,7 @@
     --secondary-text-color: #94a3b8;
     --background-color: #1c1c4c;
     --background-color2: #130339;
+    --background-text:  rgba(15, 23, 42, 0.6);
     --app-color1:  #09637E;
     --app-color2: #088395;
     --hover-color: #00f5ff;
@@ -13,6 +14,7 @@
     --success: #22c55e;
     --error: #ef4444;
     --bg: #0f172a;
+    --bg2: #434a53;
 }
 
 /* Containers */
@@ -89,6 +91,26 @@ h2 {
     margin-bottom: 1.5rem;
     min-height: 80px;
 }
+
+.word-input {
+    background: var(--background-text);
+    border: 2px solid var(--bg2);
+    border-radius: 12px;
+    color: var(--primary-text-color);
+    padding: 1.5rem;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.word-input:focus, .word-input:hover {
+    border-color: var(--primary-color);
+}
+
 
 
 
