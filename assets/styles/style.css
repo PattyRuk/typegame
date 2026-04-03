@@ -42,7 +42,7 @@
 /* Header Section */
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     margin-bottom: 3.5rem;
     background: linear-gradient(to right, var(--app-color2), var(--primary-color), var(--hover-color)); 
     -webkit-background-clip: text; /* Clips the background to the text */
@@ -64,9 +64,9 @@ h1:hover, h2:hover {
 
 
 h2 {
-    font-size: 2.7rem;
+    font-size: 2.9rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: var(--primary-color);
 }
 
@@ -76,6 +76,7 @@ h2 {
     gap: 2rem;
     margin-bottom: 2rem;
     font-weight: 700;
+    font-size: 2rem;
     color: var(--secondary-text-color);
 }
 
