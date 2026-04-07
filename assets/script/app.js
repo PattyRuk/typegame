@@ -40,16 +40,36 @@ function start() {
     resetBtn.addEventListener('click', resetGame);
 }
 
+
 // Calculate Score
     // I used the WPM score set up (but changed the 5>10 and 60>99), 
     // to make it more suitable for the time constraint and length of word will affect score 
-function calculateScore() {
-    const timeSpent = 99 - timeLeft;
-    if (timeSpent > 0) {
-        const score = Math.round((typedChars / 10) / (timeSpent / 99));
-        scoreDisplay.innerText = score;
+// function calculateScore() {
+//     const timeSpent = 99 - timeLeft;
+//     if (timeSpent > 0) {
+//         const score = Math.round((typedChars / 10) / (timeSpent / 99));
+//         scoreDisplay.innerText = score;
+//     }
+// }  
+class Score {
+    #date;
+    #hits;
+    #percentage;
+
+    constructor(hits, percentage) {
+        this.#date = new Date();
+        this.#hits = hits;
+        this.#percentage = percentage;
     }
-}  
+
+    get date() { return this.#date.toLocaleString()}
+    get hits() { return this.#hits;}
+    get percentage() { return this.#percentage;}
+    get summary() {
+        return `On ${this.formattedDate}: Player had ${this.#hits} hits (${this.#percentage}% accuracy)`;
+    }
+}
+
 
 // Update Time
 function updateTimer() {
