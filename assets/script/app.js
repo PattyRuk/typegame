@@ -24,3 +24,35 @@ const wordCountDisplay = document.getElementById('wordCount');
 const totalWordsDisplay = document.getElementById('totalWords');
 const wordInput = document.getElementById('wordInput');
 const resetBtn = document.getElementById('resetBtn');
+
+let randomWords = [];
+let isPlaying = false;
+let currentIndex = 0;
+let typedChars = 0;
+let timeLeft = 99;
+let timer = null;
+
+//Start Game
+function start() {
+    totalWordsDisplay.innerText = wordList.length;
+    resetGame();
+    wordInput.addEventListener('input', handleInput);
+    resetBtn.addEventListener('click', resetGame);
+}
+
+
+
+
+
+
+
+
+// Reset Game
+function resetGame() {
+    isPlaying = false;
+    timeLeft = 99;
+    typedChars = 0;
+    currentIndex = 0;
+    // Randomize the word pool
+
+}
