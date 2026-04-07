@@ -15,3 +15,12 @@ const wordList =
 'economy', 'interview', 'awesome', 'challenge', 'science', 'mystery',
 'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 
 'yellow', 'keyboard', 'window'];
+
+const wordDisplay = document.getElementById('wordDisplay');
+const headDisplay = document.getElementById('headDisplay')
+const scoreDisplay = document.getElementById('score');
+const timeDisplay = document.getElementById('timer');
+const wordCountDisplay = document.getElementById('wordCount');
+const totalWordsDisplay = document.getElementById('totalWords');
+const wordInput = document.getElementById('wordInput');
+const resetBtn = document.getElementById('resetBtn');
