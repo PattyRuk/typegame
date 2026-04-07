@@ -40,6 +40,16 @@ function start() {
     resetBtn.addEventListener('click', resetGame);
 }
 
+function updateTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        timeDisplay.innerText = timeLeft;
+        calculateScore();
+    } else {
+        endGame("Time's up!");
+    }
+}
+
 
 
 
