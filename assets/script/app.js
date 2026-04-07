@@ -1,4 +1,25 @@
 'strict';
+
+class Score {
+    #date;
+    #hits;
+    #percentage;
+
+    constructor(hits, percentage) {
+        this.#date = new Date();
+        this.#hits = hits;
+        this.#percentage = percentage;
+    }
+
+    get date() { return this.#date.toLocaleDateString()}
+    get hits() { return this.#hits;}
+    get percentage() { return this.#percentage;}
+    get summary() {
+        return `On ${this.date}: Player had ${this.#hits} hits (${this.#percentage}% accuracy)`;
+    }
+}
+
+
 const wordList = 
 ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 
 'population', 'weather', 'bottle','history','dream', 'character', 
@@ -40,35 +61,18 @@ function start() {
     resetBtn.addEventListener('click', resetGame);
 }
 
+//Next Word function
+function renderNextWord() {
+    if (currentIndex < randomWords.length) { 
+        wordDisplay.innerText=randomWords[currentIndex];
+        wordDisplay.style.color='var(--primary-text-color)' ; 
+        wordCountDisplay.innerText=currentIndex; 
+    } else { 
+        endGame("All words completed! CONGRATULATIONS!!"); 
 
-// Calculate Score
-    // I used the WPM score set up (but changed the 5>10 and 60>99), 
-    // to make it more suitable for the time constraint and length of word will affect score 
-// function calculateScore() {
-//     const timeSpent = 99 - timeLeft;
-//     if (timeSpent > 0) {
-//         const score = Math.round((typedChars / 10) / (timeSpent / 99));
-//         scoreDisplay.innerText = score;
-//     }
-// }  
-class Score {
-    #date;
-    #hits;
-    #percentage;
+    } 
+} 
 
-    constructor(hits, percentage) {
-        this.#date = new Date();
-        this.#hits = hits;
-        this.#percentage = percentage;
-    }
-
-    get date() { return this.#date.toLocaleString()}
-    get hits() { return this.#hits;}
-    get percentage() { return this.#percentage;}
-    get summary() {
-        return `On ${this.formattedDate}: Player had ${this.#hits} hits (${this.#percentage}% accuracy)`;
-    }
-}
 
 
 // Update Time
