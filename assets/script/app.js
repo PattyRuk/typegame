@@ -40,6 +40,18 @@ function start() {
     resetBtn.addEventListener('click', resetGame);
 }
 
+// Calculate Score
+    // I used the WPM score set up (but changed the 5>10 and 60>99), 
+    // to make it more suitable for the time constraint and length of word will affect score 
+function calculateScore() {
+    const timeSpent = 99 - timeLeft;
+    if (timeSpent > 0) {
+        const score = Math.round((typedChars / 10) / (timeSpent / 99));
+        scoreDisplay.innerText = score;
+    }
+}  
+
+// Update Time
 function updateTimer() {
     if (timeLeft > 0) {
         timeLeft--;
