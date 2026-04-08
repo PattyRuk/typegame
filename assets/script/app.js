@@ -108,14 +108,6 @@ function compareInput() {
     }
 }
 
-
-
-
-
-
-
-
-
 // Reset Game
 function resetGame() {
     clearInterval(timer);
