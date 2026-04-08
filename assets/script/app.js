@@ -15,7 +15,7 @@ class Score {
     get hits() { return this.#hits;}
     get percentage() { return this.#percentage;}
     get summary() {
-        return `On ${this.date}: Player had ${this.#hits} hits (${this.#percentage}% accuracy)`;
+        return `Final Score On ${this.date}: ${this.#hits} hits (${this.#percentage}% accuracy)`;
     }
 }
 
@@ -49,7 +49,7 @@ const resetBtn = document.getElementById('resetBtn');
 let randomWords = [];
 let userPlaying = false;
 let currentIndex = 0;
-let typedChars = 0;
+let hits = 0;
 let timeLeft = 99;
 let timer = null;
 
@@ -57,8 +57,18 @@ let timer = null;
 function start() {
     totalWordsDisplay.innerText = wordList.length;
     resetGame();
-    wordInput.addEventListener('input', handleInput);
+    wordInput.addEventListener('input', compareInput);
     resetBtn.addEventListener('click', resetGame);
+}
+
+// Update Timer 
+function updateTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        timeDisplay.innerText = timeLeft;
+    } else {
+        endGame("Time's up!");
+    }
 }
 
 //Next Word function
@@ -74,46 +84,32 @@ function nextWord() {
 } 
 
 //Compare Inputted Word
-function handleInput() { 
+function compareInput() {
     if (!userPlaying && wordInput.value.length> 0) {
         userPlaying = true;
         timer = setInterval(updateTimer, 1000);
     }
-
     const currentWord = randomWords[currentIndex];
     const inputValue = wordInput.value;
-
     if (inputValue === currentWord) {
-        typedChars += currentWord.length + 1;
         wordInput.value = '';
         currentIndex++;
-        calculateScore();
+        hits++;
         nextWord();
         return;
     }
-    wordDisplay.style.color = currentWord.startsWith(inputValue) ? 'var(--success)' : 'var(--error)';
-}
 
-//Calculate Displayed Score
-function calculateScore() {
-    const timeSpent = 99 - timeLeft;
-    if (timeSpent > 0) {
-        const accuracy = Math.round((currentIndex / wordList.length) * 100);
-        const score = accuracy * 10 - timeSpent // a fun way to keep score 
-        scoreDisplay.innerText = score ;
-    }
-}
-
-// Update Timer 
-function updateTimer() {
-    if (timeLeft > 0) {
-        timeLeft--;
-        timeDisplay.innerText = timeLeft;
-        calculateScore();
+    if (currentWord.startsWith(inputValue)) {
+    // Input matches the start of the word
+    wordDisplay.style.color = 'var(--success)';
     } else {
-        endGame("Time's up!");
+    // Input does not match
+    wordDisplay.style.color = 'var(--error)';
     }
 }
+
+
+
 
 
 
