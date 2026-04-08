@@ -74,9 +74,9 @@ function updateTimer() {
 //Next Word function
 function nextWord() {
     if (currentIndex < randomWords.length) { 
-        wordDisplay.innerText=randomWords[currentIndex];
-        wordDisplay.style.color='var(--primary-text-color)' ; 
-        hitsDisplay.innerText=currentIndex; 
+        wordDisplay.innerText = randomWords[currentIndex];
+        wordDisplay.style.color = 'var(--primary-text-color)' ; 
+        hitsDisplay.innerText = currentIndex; 
     } else { 
         endGame("All Available Words Have Been Entered! CONGRATULATIONS!!"); 
 
@@ -98,7 +98,6 @@ function compareInput() {
         nextWord();
         return;
     }
-
     if (currentWord.startsWith(inputValue)) {
     // Input matches the start of the word
     wordDisplay.style.color = 'var(--success)';
