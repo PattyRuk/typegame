@@ -41,7 +41,7 @@ const wordDisplay = document.getElementById('wordDisplay');
 const headDisplay = document.getElementById('headDisplay')
 const scoreDisplay = document.getElementById('score');
 const timeDisplay = document.getElementById('timer');
-const wordCountDisplay = document.getElementById('wordCount');
+const hitsDisplay = document.getElementById('wordCount');
 const totalWordsDisplay = document.getElementById('totalWords');
 const wordInput = document.getElementById('wordInput');
 const resetBtn = document.getElementById('resetBtn');
@@ -76,7 +76,7 @@ function nextWord() {
     if (currentIndex < randomWords.length) { 
         wordDisplay.innerText=randomWords[currentIndex];
         wordDisplay.style.color='var(--primary-text-color)' ; 
-        wordCountDisplay.innerText=currentIndex; 
+        hitsDisplay.innerText=currentIndex; 
     } else { 
         endGame("All Available Words Have Been Entered! CONGRATULATIONS!!"); 
 
@@ -118,10 +118,19 @@ function compareInput() {
 
 // Reset Game
 function resetGame() {
-    isPlaying = false;
+    clearInterval(timer);
+    userPlaying = false;
     timeLeft = 99;
+    hits = 0;
     typedChars = 0;
     currentIndex = 0;
-    // Randomize the word pool
-
+    randomWords = [...wordList].sort(() => Math.random() - 0.5); //randomize words, formula assisted by chatgpt
+    timeDisplay.innerText = '99';
+    hitsDisplay.innerText = '0';
+    headDisplay.innerText = 'Type-Tester 999';
+    wordInput.value = '';
+    wordInput.disabled = false;
+    wordInput.placeholder = "Type to begin...";
+    nextWord();
+    wordInput.focus();
 }
