@@ -119,7 +119,7 @@ function resetGame() {
     randomWords = [...wordList].sort(() => Math.random() - 0.5); //randomize words, formula assisted by chatgpt
     timeDisplay.innerText = '99';
     hitsDisplay.innerText = '0';
-    headDisplay.innerText = 'Type-Tester 999';
+    headDisplay.innerText = 'Lets Test Your Speed!';
     wordInput.value = '';
     wordInput.disabled = false;
     wordInput.placeholder = "Type to begin...";
