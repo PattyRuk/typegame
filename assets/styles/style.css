@@ -46,7 +46,7 @@
 /* Header Section */
 #header {
     font-size: 5rem;
-    font-weight: 900;
+    font-weight: 800;
     margin-bottom: 3rem;
 }
 
@@ -71,7 +71,7 @@ h2 {
     font-size: 5rem;
 }
 
-.fa-keyboard:hover {
+.fa-keyboard:hover, #header:hover {
     animation: glowCycle 3s infinite;
     transform: translateY(-3px);
     cursor: pointer;
@@ -103,7 +103,7 @@ h2 {
     gap: 1rem;
     margin-bottom: 2rem;
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--secondary-text-color);
 }
 
