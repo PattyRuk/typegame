@@ -13,17 +13,23 @@
     <script src="./assets/script/app.js" defer></script>
 </head>
 <body class="container">
-    <h1><i class="fa-regular fa-keyboard"></i> The Fastest Typing Game</h1>
+    <h1 id="header">Type-Tester 999</h1>
     <div class="game-container">
-        <h2>Type-Tester 9999</h2>
+    <h2>
+        <i class="fa-regular fa-keyboard"></i>
+        <i class="fa-solid fa-keyboard"></i>
+        <i class="fa-regular fa-keyboard"></i>
+        <i class="fa-solid fa-keyboard"></i>
+        <i class="fa-regular fa-keyboard"></i>
+    </h2>
+    <h1 id="headDisplay">Lets Test Your Speed!</h1>
         <div class="stats">
-            <div>Time: <span id="timer">99</span> s</div>
-            <div>SCORE: <span id="score">0</span></div>
-            <div>Words: <span id="wordCount">0</span> / <span id="totalWords">0</span></div>
+            <div>Time: <span id="timer">99</span>s</div>
+            <div>Hits: <span id="wordCount">0</span> / <span id="totalWords">0</span></div>
         </div>
         <div class="word-display" id="wordDisplay"></div>
         <div><input type="text" class="word-input" id="wordInput"></div>
-        <button id="resetBtn" class="reset-btn">RESET GAME</button>    
+        <button id="resetBtn" class="reset-btn">RESET GAME</button>
     </div>
 </body>
 </html>
