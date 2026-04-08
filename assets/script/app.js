@@ -133,5 +133,10 @@ function endGame(message) {
     wordDisplay.innerText = "Done!";
     wordDisplay.style.color = 'var(--error)';
     headDisplay.style.fontSize = '2rem';
-
+    // Calculate final accuracy percentage
+    const accuracy = Math.round((currentIndex / wordList.length) * 100);
+    // Create the Score object
+    const finalScore = new Score(currentIndex, accuracy);
+    // Use the object to update the UI
+    headDisplay.innerText = `${finalScore.summary}`;
 }
