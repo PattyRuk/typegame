@@ -126,3 +126,12 @@ function resetGame() {
     nextWord();
     wordInput.focus();
 }
+
+function endGame(message) {
+    clearInterval(timer);
+    wordInput.disabled = true;
+    wordDisplay.innerText = "Done!";
+    wordDisplay.style.color = 'var(--error)';
+    headDisplay.style.fontSize = '2rem';
+
+}
