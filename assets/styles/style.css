@@ -67,6 +67,35 @@ h2 {
     color: var(--primary-color);
 }
 
+.fa-keyboard {
+    font-size: 5rem;
+}
+
+.fa-keyboard:hover {
+    animation: glowCycle 3s infinite;
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+
+@keyframes glowCycle {
+    0% {
+        color: #8a2be2; /* BlueViolet */
+        /* Reduced from 10px/20px to 5px/10px */
+        text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2;
+    }
+    33% {
+        color: #007bff; /* Electric Blue */
+        text-shadow: 0 0 5px #007bff, 0 0 10px #007bff;
+    }
+    66% {
+        color: #9400d3; /* DarkViolet */
+        text-shadow: 0 0 5px #9400d3, 0 0 10px #9400d3;
+    }
+        100% {
+        color: #8a2be2; /* Back to BlueViolet */
+        text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2;
+    }
+}
 
 .stats {
     display: flex;
