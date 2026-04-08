@@ -47,7 +47,7 @@ const wordInput = document.getElementById('wordInput');
 const resetBtn = document.getElementById('resetBtn');
 
 let randomWords = [];
-let isPlaying = false;
+let userPlaying = false;
 let currentIndex = 0;
 let typedChars = 0;
 let timeLeft = 99;
@@ -62,20 +62,49 @@ function start() {
 }
 
 //Next Word function
-function renderNextWord() {
+function nextWord() {
     if (currentIndex < randomWords.length) { 
         wordDisplay.innerText=randomWords[currentIndex];
         wordDisplay.style.color='var(--primary-text-color)' ; 
         wordCountDisplay.innerText=currentIndex; 
     } else { 
-        endGame("All words completed! CONGRATULATIONS!!"); 
+        endGame("All Available Words Have Been Entered! CONGRATULATIONS!!"); 
 
     } 
 } 
 
+//Compare Inputted Word
+function handleInput() { 
+    if (!userPlaying && wordInput.value.length> 0) {
+        userPlaying = true;
+        timer = setInterval(updateTimer, 1000);
+    }
 
+    const currentWord = randomWords[currentIndex];
+    const inputValue = wordInput.value;
 
-// Update Time
+    if (inputValue === currentWord) {
+        typedChars += currentWord.length + 1;
+        wordInput.value = '';
+        currentIndex++;
+        calculateScore();
+        nextWord();
+        return;
+    }
+    wordDisplay.style.color = currentWord.startsWith(inputValue) ? 'var(--success)' : 'var(--error)';
+}
+
+//Calculate Displayed Score
+function calculateScore() {
+    const timeSpent = 99 - timeLeft;
+    if (timeSpent > 0) {
+        const accuracy = Math.round((currentIndex / wordList.length) * 100);
+        const score = accuracy * 10 - timeSpent // a fun way to keep score 
+        scoreDisplay.innerText = score ;
+    }
+}
+
+// Update Timer 
 function updateTimer() {
     if (timeLeft > 0) {
         timeLeft--;
@@ -85,8 +114,6 @@ function updateTimer() {
         endGame("Time's up!");
     }
 }
-
-
 
 
 
