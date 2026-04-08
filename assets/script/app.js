@@ -140,3 +140,4 @@ function endGame(message) {
     // Use the object to update the UI
     headDisplay.innerText = `${finalScore.summary}`;
 }
+start();
