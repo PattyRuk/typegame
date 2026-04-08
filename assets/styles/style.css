@@ -1,4 +1,4 @@
- @charset "UTF-8";
+@charset "UTF-8";
 @import './reset.css';
 
 :root {
@@ -67,6 +67,7 @@ h2 {
     color: var(--primary-color);
 }
 
+/* Icons */
 .fa-keyboard {
     font-size: 6rem;
 }
@@ -97,6 +98,7 @@ h2 {
     }
 }
 
+/* Stats Section */
 .stats {
     display: flex;
     justify-content: center;
@@ -118,6 +120,7 @@ h2 {
     font-weight: 700;
 }
 
+/* Word Input/Text Box */
 .word-input {
     background: var(--background-text);
     border: 2px solid var(--bg2);
@@ -138,6 +141,7 @@ h2 {
     border-color: var(--primary-color);
 }
 
+/* Button */
 .reset-btn {
     background: var(--primary-color);
     color: var(--primary-text-color);
