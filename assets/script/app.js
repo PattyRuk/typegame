@@ -56,12 +56,18 @@ const totalWordsDisplay = document.getElementById('totalWords');
 const wordInput = document.getElementById('wordInput');
 const resetBtn = document.getElementById('resetBtn');
 
+//Game Info
+const popup = document.getElementById('popUp');
+const open = document.getElementById('openBtn');
+const close = document.getElementById('closeBtn');
+
 let randomWords = [];
 let userPlaying = false;
 let currentIndex = 0;
 let hits = 0;
 let timeLeft = 99;
 let timer = null;
+
 
 // Game Sound
 const bgMusic = new Audio("./assets/media/game-sound.mp3");
@@ -72,17 +78,6 @@ bgMusic.volume = 0.5;
 const endSound = new Audio("./assets/media/game-over.mp3");
 endSound.volume = 1.0;
 
-//Start Game
-function start() {
-    totalWordsDisplay.innerText = wordList.length;
-    resetGame();
-    wordInput.addEventListener('input', compareInput);
-    resetBtn.addEventListener('click', resetGame);
-
-    document.addEventListener("click", () => {
-        bgMusic.play();
-    }, { once: true });
-}
 
 // Update Timer 
 function updateTimer() {
@@ -123,6 +118,7 @@ function compareInput() {
     const inputValue = wordInput.value;
 
     if (inputValue === currentWord) {
+        wordInput.placeholder = "";
         wordInput.value = '';
         currentIndex++;
         hits++;
@@ -143,13 +139,16 @@ function compareInput() {
 function changeBackground() {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-    const container = document.querySelector(".game-container");
+    const container = document.querySelector(".container");
 
     container.style.background = randomColor;
 
     // Match reset button with background
     resetBtn.style.background = randomColor;
     resetBtn.style.borderColor = randomColor;
+    // match close button
+    close.style.background = randomColor;
+    close.style.borderColor = randomColor;
 }
 
 // Reset Game
@@ -162,14 +161,15 @@ function resetGame() {
     randomWords = [...wordList].sort(() => Math.random() - 0.5); //randomize words, formula assisted by chatgpt
     timeDisplay.innerText = '99';
     hitsDisplay.innerText = '0';
-    headDisplay.innerText = 'Lets Test Your Speed!';
+    totalWordsDisplay.innerText = wordList.length;
+    headDisplay.innerText = 'TEST YOUR SPEED!';
+    headDisplay.style.fontSize = '3.5rem';
     wordInput.value = '';
     wordInput.disabled = false;
     wordInput.placeholder = "Type to begin...";
 
     bgMusic.currentTime = 0;
-    bgMusic.volume = 0.5;
-
+    bgMusic.pause();
     changeBackground();
 
     nextWord();
@@ -181,12 +181,12 @@ function endGame(message) {
     wordInput.disabled = true;
     wordDisplay.innerText = "GAME OVER!";
     wordDisplay.style.color = 'var(--error)';
-    headDisplay.style.fontSize = '2rem';
+    headDisplay.style.fontSize = '2.5rem';
     // Calculate final accuracy percentage
     const accuracy = Math.round((currentIndex / wordList.length) * 100);
     // Create the Score object
     const finalScore = new Score(currentIndex, accuracy);
-    // Use the object to update the UI
+    // Use the object to update the head display
     headDisplay.innerText = `${finalScore.summary}`;
 
     // to lower background music, not stop.
@@ -197,7 +197,27 @@ function endGame(message) {
 
     // retores music after end-game sound.
     endSound.onended = () => {
-        bgMusic.volume = 0.5;
+        bgMusic.volume = 0.2;
     };
 }
-start();
+
+// Show popup
+open.addEventListener('click', () => {
+  popup.style.display = 'block';
+});
+
+// Hide popup
+close.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
+
+
+//Starting Game
+wordInput.addEventListener('input', compareInput);
+resetBtn.addEventListener('click', resetGame);
+
+document.addEventListener("input", () => {
+    bgMusic.play();
+}, { once: true });
+
+resetGame();
