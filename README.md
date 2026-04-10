@@ -80,3 +80,6 @@ The game also features dynamic UI changes and audio effects to enhance user expe
   * Time runs out OR
   * All words are completed
 * Displays final score and accuracy.
+
+## LIVE GAME
+[Test The Game!](https://pattyruk.github.io/typegame/)
