@@ -63,6 +63,8 @@ let hits = 0;
 let timeLeft = 99;
 let timer = null;
 
+
+
 // Game Sound
 const bgMusic = new Audio("./assets/media/game-sound.mp3");
 bgMusic.loop = true;
