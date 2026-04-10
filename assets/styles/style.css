@@ -155,7 +155,6 @@ h2 {
     width: 20rem;
     margin-top: 1rem;
     cursor: pointer;
-    transition: all 0.3s;
     letter-spacing: 1.3px;
     transition: all 0.3s ease;
 }
@@ -189,4 +188,22 @@ h2 {
 p {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
+}
+
+/* icon animation*/
+.animated-icon {
+  display: inline-block;
+  animation: floatUpDown 1s ease-in-out infinite alternate;
+}
+
+/* Stagger animation delays for a wave effect */
+.animated-icon:nth-child(1) { animation-delay: 0.0s; }
+.animated-icon:nth-child(2) { animation-delay: 0.2s; }
+.animated-icon:nth-child(3) { animation-delay: 0.4s; }
+.animated-icon:nth-child(4) { animation-delay: 0.6s; }
+.animated-icon:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes floatUpDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); } /* Moves up 10px */
 }
