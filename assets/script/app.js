@@ -39,12 +39,12 @@ const wordList =
 
 // Background Colors
 const colors = [
-    "#222286",
-    "#0000F7",
-    "#3a0ca3",
-    "#0140c6",
+    "#1a142c",
+    "#201735",
+    "#2a2145",
+    "#312750",
     "#231b3b",
-    "#1929BF"
+    "#3a2e5c"
 ];
 
 const wordDisplay = document.getElementById('wordDisplay');
