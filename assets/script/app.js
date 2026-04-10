@@ -72,17 +72,7 @@ bgMusic.volume = 0.5;
 const endSound = new Audio("./assets/media/game-over.mp3");
 endSound.volume = 1.0;
 
-//Start Game
-function start() {
-    totalWordsDisplay.innerText = wordList.length;
-    resetGame();
-    wordInput.addEventListener('input', compareInput);
-    resetBtn.addEventListener('click', resetGame);
 
-    document.addEventListener("input", () => {
-        bgMusic.play();
-    }, { once: true });
-}
 
 // Update Timer 
 function updateTimer() {
@@ -163,6 +153,7 @@ function resetGame() {
     randomWords = [...wordList].sort(() => Math.random() - 0.5); //randomize words, formula assisted by chatgpt
     timeDisplay.innerText = '99';
     hitsDisplay.innerText = '0';
+    totalWordsDisplay.innerText = wordList.length;
     headDisplay.innerText = 'TEST YOUR SPEED!';
     headDisplay.style.fontSize = '3.5rem';
     wordInput.value = '';
@@ -201,4 +192,13 @@ function endGame(message) {
         bgMusic.volume = 0.2;
     };
 }
-start();
+
+//Starting Game
+wordInput.addEventListener('input', compareInput);
+resetBtn.addEventListener('click', resetGame);
+
+document.addEventListener("input", () => {
+    bgMusic.play();
+}, { once: true });
+
+resetGame();
