@@ -11,11 +11,11 @@ class Score {
         this.#percentage = percentage;
     }
 
-    get date() { return this.#date.toLocaleDateString()}
+    get date() { return this.#date.toLocaleString()}
     get hits() { return this.#hits;}
     get percentage() { return this.#percentage;}
     get summary() {
-        return `Final Score On ${this.date}: ${this.#hits} hits (${this.#percentage}% accuracy)`;
+        return `Date: ${this.date} \nFinal Score: ${this.#hits} hits (${this.#percentage}% accuracy)`;
     }
 }
 
@@ -115,7 +115,7 @@ function compareInput() {
     }
 
     const currentWord = randomWords[currentIndex];
-    const inputValue = wordInput.value;
+    const inputValue = wordInput.value.toLowerCase().trim(' ');
 
     if (inputValue === currentWord) {
         wordInput.placeholder = "";
