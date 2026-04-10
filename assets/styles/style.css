@@ -28,33 +28,33 @@
     text-align: center;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 40px;
+    padding: 30px;
     transition: background 0.5s ease;
 }
 
 .game-container {
     background: var(--background-color);
     border: 1px solid var(--background-color);
-    padding: 1.8rem;
-    border-radius: 24px;
+    padding: 1.2rem;
+    border-radius: 20px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    width: 85%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 500px;
     text-align: center;
 }
 
 
 /* Header Section */
 #header {
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 h1 {
     font-weight: 700;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
     background: linear-gradient(to right, var(--app-color2), var(--primary-color), var(--hover-color));
     -webkit-background-clip: text; /* this was used for text background color(chatgpt assisted) */
     background-clip: text;
@@ -73,7 +73,7 @@ h2 {
     font-size: 6rem;
 }
 
-.fa-keyboard:hover, #header:hover {
+.fa-keyboard:hover, #header:hover, h1:hover {
     animation: glowCycle 3s infinite;
     transform: translateY(-4px);
     cursor: pointer;
@@ -130,7 +130,7 @@ h2 {
     border-radius: 12px;
     color: var(--primary-text-color);
     padding: 1.5rem;
-    width: 100%;
+    width: 90%;
     box-sizing: border-box;
     outline: none;
     font-size: 3rem;
@@ -181,13 +181,18 @@ h2 {
     border-radius: 24px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     width: 70%;
-    max-width: 550px;
+    max-width: 560px;
     font-size: 2rem;
 }
 
 p {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
+}
+
+p:hover {
+    color: var(--hover-color);
+    font-weight: 500;
 }
 
 /* icon animation*/
@@ -205,5 +210,5 @@ p {
 
 @keyframes floatUpDown {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-6px); } /* Moves up 10px */
+  100% { transform: translateY(-6px); } 
 }
