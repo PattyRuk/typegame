@@ -73,7 +73,7 @@ h2 {
     font-size: 6rem;
 }
 
-.fa-keyboard:hover, #header:hover {
+.fa-keyboard:hover, #header:hover, h1:hover {
     animation: glowCycle 3s infinite;
     transform: translateY(-4px);
     cursor: pointer;
