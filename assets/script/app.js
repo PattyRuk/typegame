@@ -1,19 +1,5 @@
 'use strict';
 
-const bgMusic = new Audio("./assets/media/game-sound.mp3");
-bgMusic.loop = true;
-bgMusic.volume = 0.5;
-
-// Background Colors
-const colors = [
-    "#1c1c4c",
-    "#2b2d42",
-    "#3a0ca3",
-    "#14213d",
-    "#1b263b",
-    "#0f3460"
-];
-
 class Score {
     #date;
     #hits;
@@ -51,6 +37,16 @@ const wordList =
 'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 
 'yellow', 'keyboard', 'window'];
 
+// Background Colors
+const colors = [
+    "#1c1c4c",
+    "#2b2d42",
+    "#3a0ca3",
+    "#14213d",
+    "#1b263b",
+    "#0f3460"
+];
+
 const wordDisplay = document.getElementById('wordDisplay');
 const headDisplay = document.getElementById('headDisplay')
 const scoreDisplay = document.getElementById('score');
@@ -67,12 +63,20 @@ let hits = 0;
 let timeLeft = 99;
 let timer = null;
 
+const bgMusic = new Audio("./assets/media/game-sound.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.5;
+
 //Start Game
 function start() {
     totalWordsDisplay.innerText = wordList.length;
     resetGame();
     wordInput.addEventListener('input', compareInput);
     resetBtn.addEventListener('click', resetGame);
+
+    document.addEventListener("click", () => {
+        bgMusic.play();
+    }, { once: true });
 }
 
 // Update Timer 
@@ -91,6 +95,8 @@ function nextWord() {
         wordDisplay.innerText = randomWords[currentIndex];
         wordDisplay.style.color = 'var(--primary-text-color)' ; 
         hitsDisplay.innerText = currentIndex; 
+        changeBackground(); // change color on new words
+
     } else { 
         endGame("All Available Words Have Been Entered! CONGRATULATIONS!!"); 
 
