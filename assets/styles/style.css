@@ -7,9 +7,9 @@
     --background-color: #1c1c4c;
     --background-color2: #130339;
     --background-text: rgba(15, 23, 42, 0.6);
-    --app-color1: #09637E;
-    --app-color2: #088395;
-    --hover-color: #00f5ff;
+    --app-color1: #8033c9;
+    --app-color2: #007bff;
+    --hover-color: #1996d4;
     --primary-color: #6366f1;
     --success: #22c55e;
     --error: #ef4444;
@@ -45,7 +45,7 @@
 
 /* Header Section */
 #header {
-    font-size: 5rem;
+    font-size: 6rem;
     font-weight: 700;
     margin-bottom: 3rem;
 }
@@ -74,27 +74,30 @@ h2 {
 
 .fa-keyboard:hover, #header:hover {
     animation: glowCycle 3s infinite;
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     cursor: pointer;
 }
 
 @keyframes glowCycle {
     0% {
-        color: #8a2be2; /* BlueViolet */
-        /* Reduced from 10px/20px to 5px/10px */
-        text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2;
+        color: var(--app-color1); 
+        text-shadow: 0 0 5px var(--app-color1), 0 0 10px var(--app-color1);
     }
-    33% {
-        color: #007bff; /* Electric Blue */
-        text-shadow: 0 0 5px #007bff, 0 0 10px #007bff;
+    25% {
+        color: var(--app-color2); 
+        text-shadow: 0 0 5px var(--app-color2), 0 0 10px var(--app-color2);
     }
-    66% {
-        color: #9400d3; /* DarkViolet */
-        text-shadow: 0 0 5px #9400d3, 0 0 10px #9400d3;
+    50% {
+        color: var(--primary-color); 
+        text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
     }
-        100% {
-        color: #8a2be2; /* Back to BlueViolet */
-        text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2;
+    75% {
+        color: var(--hover-color); 
+        text-shadow: 0 0 5px var(--hover-color), 0 0 10px var(--hover-color);
+    }
+    100% {
+        color: var(--app-color1); 
+        text-shadow: 0 0 5px var(--app-color1), 0 0 10px var(--app-color1);
     }
 }
 
@@ -102,7 +105,7 @@ h2 {
 .stats {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     margin-bottom: 2rem;
     font-weight: 800;
     font-size: 2rem;
@@ -114,7 +117,7 @@ h2 {
 }
 
 .word-display {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     min-height: 80px;
     font-weight: 700;
@@ -130,7 +133,7 @@ h2 {
     width: 100%;
     box-sizing: border-box;
     outline: none;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 2rem;

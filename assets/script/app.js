@@ -164,6 +164,7 @@ function resetGame() {
     timeDisplay.innerText = '99';
     hitsDisplay.innerText = '0';
     headDisplay.innerText = 'TEST YOUR SPEED!';
+    headDisplay.style.fontSize = '3.5rem';
     wordInput.value = '';
     wordInput.disabled = false;
     wordInput.placeholder = "Type to begin...";
@@ -198,7 +199,7 @@ function endGame(message) {
 
     // retores music after end-game sound.
     endSound.onended = () => {
-        bgMusic.volume = 0.5;
+        bgMusic.volume = 0.2;
     };
 }
 start();
