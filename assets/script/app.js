@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 class Score {
     #date;
@@ -37,6 +37,16 @@ const wordList =
 'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 
 'yellow', 'keyboard', 'window'];
 
+// Background Colors
+const colors = [
+    "#1a142c",
+    "#201735",
+    "#2a2145",
+    "#312750",
+    "#231b3b",
+    "#3a2e5c"
+];
+
 const wordDisplay = document.getElementById('wordDisplay');
 const headDisplay = document.getElementById('headDisplay')
 const scoreDisplay = document.getElementById('score');
@@ -53,12 +63,25 @@ let hits = 0;
 let timeLeft = 99;
 let timer = null;
 
+// Game Sound
+const bgMusic = new Audio("./assets/media/game-sound.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.5;
+
+// Game-over Sound
+const endSound = new Audio("./assets/media/game-over.mp3");
+endSound.volume = 1.0;
+
 //Start Game
 function start() {
     totalWordsDisplay.innerText = wordList.length;
     resetGame();
     wordInput.addEventListener('input', compareInput);
     resetBtn.addEventListener('click', resetGame);
+
+    document.addEventListener("click", () => {
+        bgMusic.play();
+    }, { once: true });
 }
 
 // Update Timer 
@@ -77,6 +100,8 @@ function nextWord() {
         wordDisplay.innerText = randomWords[currentIndex];
         wordDisplay.style.color = 'var(--primary-text-color)' ; 
         hitsDisplay.innerText = currentIndex; 
+        changeBackground(); // change color on new words
+
     } else { 
         endGame("All Available Words Have Been Entered! CONGRATULATIONS!!"); 
 
@@ -85,12 +110,18 @@ function nextWord() {
 
 //Compare Inputted Word
 function compareInput() {
+    if (bgMusic.paused) {
+    bgMusic.play().catch(() => {});
+    }
+
     if (!userPlaying && wordInput.value.length> 0) {
         userPlaying = true;
         timer = setInterval(updateTimer, 1000);
     }
+
     const currentWord = randomWords[currentIndex];
     const inputValue = wordInput.value;
+
     if (inputValue === currentWord) {
         wordInput.value = '';
         currentIndex++;
@@ -98,6 +129,7 @@ function compareInput() {
         nextWord();
         return;
     }
+    
     if (currentWord.startsWith(inputValue)) {
     // Input matches the start of the word
     wordDisplay.style.color = 'var(--success)';
@@ -107,13 +139,25 @@ function compareInput() {
     }
 }
 
+// Background change
+function changeBackground() {
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    const container = document.querySelector(".game-container");
+
+    container.style.background = randomColor;
+
+    // Match reset button with background
+    resetBtn.style.background = randomColor;
+    resetBtn.style.borderColor = randomColor;
+}
+
 // Reset Game
 function resetGame() {
     clearInterval(timer);
     userPlaying = false;
     timeLeft = 99;
     hits = 0;
-    typedChars = 0;
     currentIndex = 0;
     randomWords = [...wordList].sort(() => Math.random() - 0.5); //randomize words, formula assisted by chatgpt
     timeDisplay.innerText = '99';
@@ -122,6 +166,12 @@ function resetGame() {
     wordInput.value = '';
     wordInput.disabled = false;
     wordInput.placeholder = "Type to begin...";
+
+    bgMusic.currentTime = 0;
+    bgMusic.volume = 0.5;
+
+    changeBackground();
+
     nextWord();
     wordInput.focus();
 }
@@ -129,7 +179,7 @@ function resetGame() {
 function endGame(message) {
     clearInterval(timer);
     wordInput.disabled = true;
-    wordDisplay.innerText = "Done!";
+    wordDisplay.innerText = "GAME OVER!";
     wordDisplay.style.color = 'var(--error)';
     headDisplay.style.fontSize = '2rem';
     // Calculate final accuracy percentage
@@ -138,5 +188,16 @@ function endGame(message) {
     const finalScore = new Score(currentIndex, accuracy);
     // Use the object to update the UI
     headDisplay.innerText = `${finalScore.summary}`;
+
+    // to lower background music, not stop.
+    bgMusic.volume = 0.2;
+    // to play end-game sound.
+    endSound.currentTime = 0;
+    endSound.play();
+
+    // retores music after end-game sound.
+    endSound.onended = () => {
+        bgMusic.volume = 0.5;
+    };
 }
 start();
