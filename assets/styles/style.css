@@ -7,7 +7,7 @@
     --background-color: #1c1c4c;
     --background-color2: #130339;
     --background-text: rgba(15, 23, 42, 0.6);
-    --app-color1: #8033c9;
+    --app-color1: #6b2991;
     --app-color2: #007bff;
     --hover-color: #1996d4;
     --primary-color: #6366f1;
@@ -108,7 +108,7 @@ h2 {
     gap: 2rem;
     margin-bottom: 2rem;
     font-weight: 800;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--secondary-text-color);
 }
 
@@ -117,8 +117,7 @@ h2 {
 }
 
 .word-display {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.3rem;
     min-height: 80px;
     font-weight: 700;
 }
@@ -136,7 +135,7 @@ h2 {
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .word-input:focus,
@@ -164,7 +163,7 @@ h2 {
     transform: translateY(-3px);
 }
 
-.game-container {
+.container {
     transition: background 0.5s ease;
 }
 

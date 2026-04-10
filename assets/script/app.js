@@ -79,7 +79,7 @@ function start() {
     wordInput.addEventListener('input', compareInput);
     resetBtn.addEventListener('click', resetGame);
 
-    document.addEventListener("click", () => {
+    document.addEventListener("input", () => {
         bgMusic.play();
     }, { once: true });
 }
@@ -170,8 +170,7 @@ function resetGame() {
     wordInput.placeholder = "Type to begin...";
 
     bgMusic.currentTime = 0;
-    bgMusic.volume = 0.5;
-
+    bgMusic.pause();
     changeBackground();
 
     nextWord();
@@ -183,7 +182,7 @@ function endGame(message) {
     wordInput.disabled = true;
     wordDisplay.innerText = "GAME OVER!";
     wordDisplay.style.color = 'var(--error)';
-    headDisplay.style.fontSize = '2rem';
+    headDisplay.style.fontSize = '2.5rem';
     // Calculate final accuracy percentage
     const accuracy = Math.round((currentIndex / wordList.length) * 100);
     // Create the Score object
