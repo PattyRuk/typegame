@@ -63,7 +63,18 @@ let hits = 0;
 let timeLeft = 99;
 let timer = null;
 
+//Game Info
+const popup = document.getElementById('popUp');
 
+// Show popup
+document.getElementById('openBtn').addEventListener('click', () => {
+  popup.style.display = 'block';
+});
+
+// Hide popup
+document.getElementById('closeBtn').addEventListener('click', () => {
+  popup.style.display = 'none';
+});
 
 // Game Sound
 const bgMusic = new Audio("./assets/media/game-sound.mp3");
