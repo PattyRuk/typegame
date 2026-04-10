@@ -123,6 +123,7 @@ function compareInput() {
     const inputValue = wordInput.value;
 
     if (inputValue === currentWord) {
+        wordInput.placeholder = "";
         wordInput.value = '';
         currentIndex++;
         hits++;
