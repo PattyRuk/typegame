@@ -143,7 +143,7 @@ function compareInput() {
 function changeBackground() {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-    const container = document.querySelector(".game-container");
+    const container = document.querySelector(".container");
 
     container.style.background = randomColor;
 
@@ -162,7 +162,7 @@ function resetGame() {
     randomWords = [...wordList].sort(() => Math.random() - 0.5); //randomize words, formula assisted by chatgpt
     timeDisplay.innerText = '99';
     hitsDisplay.innerText = '0';
-    headDisplay.innerText = 'Lets Test Your Speed!';
+    headDisplay.innerText = 'TEST YOUR SPEED!';
     wordInput.value = '';
     wordInput.disabled = false;
     wordInput.placeholder = "Type to begin...";
@@ -186,7 +186,7 @@ function endGame(message) {
     const accuracy = Math.round((currentIndex / wordList.length) * 100);
     // Create the Score object
     const finalScore = new Score(currentIndex, accuracy);
-    // Use the object to update the UI
+    // Use the object to update the head display
     headDisplay.innerText = `${finalScore.summary}`;
 
     // to lower background music, not stop.
