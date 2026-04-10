@@ -117,7 +117,7 @@ h2 {
 }
 
 .word-display {
-    font-size: 3.3rem;
+    font-size: 3.5rem;
     min-height: 80px;
     font-weight: 700;
 }
@@ -160,7 +160,7 @@ h2 {
     background: transparent;
     color: var(--primary-color);
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
 .container {
