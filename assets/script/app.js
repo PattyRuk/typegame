@@ -1,4 +1,18 @@
-'strict';
+'use strict';
+
+const bgMusic = new Audio("./assets/media/game-sound.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.5;
+
+// Background Colors
+const colors = [
+    "#1c1c4c",
+    "#2b2d42",
+    "#3a0ca3",
+    "#14213d",
+    "#1b263b",
+    "#0f3460"
+];
 
 class Score {
     #date;
@@ -105,6 +119,19 @@ function compareInput() {
     // Input does not match
     wordDisplay.style.color = 'var(--error)';
     }
+}
+
+// Background change
+function changeBackground() {
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    const container = document.querySelector(".game-container");
+
+    container.style.background = randomColor;
+
+    // Match reset button with background
+    resetBtn.style.background = randomColor;
+    resetBtn.style.borderColor = randomColor;
 }
 
 // Reset Game
