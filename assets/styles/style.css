@@ -29,6 +29,7 @@
     min-height: 100vh;
     margin: 0 auto;
     padding: 40px;
+    transition: background 0.5s ease;
 }
 
 .game-container {
@@ -156,6 +157,7 @@ h2 {
     cursor: pointer;
     transition: all 0.3s;
     letter-spacing: 1.3px;
+    transition: all 0.3s ease;
 }
 
 .reset-btn:hover, #closeBtn:hover {
@@ -165,13 +167,7 @@ h2 {
     transform: translateY(-4px);
 }
 
-.container {
-    transition: background 0.5s ease;
-}
 
-.reset-btn {
-    transition: all 0.3s ease;
-}
 
 /* Pop-Up */
 #popUp {
@@ -180,14 +176,13 @@ h2 {
     top:50%; 
     left:50%; 
     transform:translate(-50%, -30%); 
-    z-index:1000;
     background: var(--background-color);
     border: 1px solid var(--background-color);
     padding: 1.8rem;
     border-radius: 24px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    width: 85%;
-    max-width: 600px;
+    width: 70%;
+    max-width: 550px;
     font-size: 2rem;
 }
 
