@@ -82,4 +82,4 @@ The game also features dynamic UI changes and audio effects to enhance user expe
 * Displays final score and accuracy.
 
 ## LIVE GAME
-[Test The Game!](https://github.com/PattyRuk/typegame.git)
+[Test The Game!](https://pattyruk.github.io/typegame/)
