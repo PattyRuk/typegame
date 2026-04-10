@@ -56,6 +56,11 @@ const totalWordsDisplay = document.getElementById('totalWords');
 const wordInput = document.getElementById('wordInput');
 const resetBtn = document.getElementById('resetBtn');
 
+//Game Info
+const popup = document.getElementById('popUp');
+const open = document.getElementById('openBtn');
+const close = document.getElementById('closeBtn');
+
 let randomWords = [];
 let userPlaying = false;
 let currentIndex = 0;
@@ -63,18 +68,6 @@ let hits = 0;
 let timeLeft = 99;
 let timer = null;
 
-//Game Info
-const popup = document.getElementById('popUp');
-
-// Show popup
-document.getElementById('openBtn').addEventListener('click', () => {
-  popup.style.display = 'block';
-});
-
-// Hide popup
-document.getElementById('closeBtn').addEventListener('click', () => {
-  popup.style.display = 'none';
-});
 
 // Game Sound
 const bgMusic = new Audio("./assets/media/game-sound.mp3");
@@ -84,7 +77,6 @@ bgMusic.volume = 0.5;
 // Game-over Sound
 const endSound = new Audio("./assets/media/game-over.mp3");
 endSound.volume = 1.0;
-
 
 
 // Update Timer 
@@ -154,6 +146,9 @@ function changeBackground() {
     // Match reset button with background
     resetBtn.style.background = randomColor;
     resetBtn.style.borderColor = randomColor;
+    // match close button
+    close.style.background = randomColor;
+    close.style.borderColor = randomColor;
 }
 
 // Reset Game
@@ -205,6 +200,17 @@ function endGame(message) {
         bgMusic.volume = 0.2;
     };
 }
+
+// Show popup
+open.addEventListener('click', () => {
+  popup.style.display = 'block';
+});
+
+// Hide popup
+close.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
+
 
 //Starting Game
 wordInput.addEventListener('input', compareInput);
