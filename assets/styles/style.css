@@ -190,3 +190,32 @@ p {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
 }
+
+/* Modal styling */
+.score-modal {
+    /* display: none; */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.score-box {
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: 16px;
+    width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#scoreList {
+    list-style: none;
+    padding: 0;
+}
+
+#scoreList li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
