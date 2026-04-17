@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="An online game">
-    <link rel="icon" href="./assets/media/keyboard-solid.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/styles/style.css"/>
-    <title>Typing Game</title>
-    <script src="./assets/script/app.js" defer></script>
-</head>
-<body class="container">
-    <h1 id="header">Type-Tester 9099 </h1>
-    <div id="popUp">
-        <p>
-            Welcome to the <strong>Type-Tester 9099!</strong>
-            The Rules are simple! Correctly type as many words as possible 
-            within 99 seconds! <strong>The Final Score</strong> will calculate 
-            your accuracy based on how many words were typed correctly out of 90 
-            possible words! Good Luck and have Fun!!!
-        </p>
-        <button id="closeBtn">Close</button>
-    </div>
-    <div class="game-container">
-    <h2 id="openBtn">
-        <i class="fa-regular fa-keyboard"></i>
-        <i class="fa-solid fa-keyboard"></i>
-        <i class="fa-regular fa-keyboard"></i>
-        <i class="fa-solid fa-keyboard"></i>
-        <i class="fa-regular fa-keyboard"></i>
-    </h2>
-    <h1 id="headDisplay">TEST YOUR SPEED!</h1>
-        <div class="stats">
-            <div>Time: <span id="timer">99</span>s</div>
-            <div>Hits: <span id="wordCount">0</span>/<span id="totalWords">0</span></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="description" content="An online game">
+        <link rel="icon" href="./assets/media/keyboard-solid.png" type="image/x-icon" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="./assets/styles/style.css"/>
+        <title>Typing Game</title>
+        <script src="./assets/script/app.js" defer></script>
+    </head>
+    <body class="container">
+        <h1 id="header">Type-Tester 9099 </h1>
+        <div id="popUp">
+            <p>
+                Welcome to the <strong>Type-Tester 9099!</strong>
+                The Rules are simple! Correctly type as many words as possible 
+                within 99 seconds! <strong>The Final Score</strong> will calculate 
+                your accuracy based on how many words were typed correctly out of 90 
+                possible words! Good Luck and have Fun!!!
+            </p>
+            <button id="closeBtn">Close</button>
         </div>
-        <div class="word-display" id="wordDisplay"></div>
-        <div><input type="text" class="word-input" id="wordInput"></div>
-        <button id="resetBtn" class="reset-btn">RESET GAME</button>
-    </div>
-</body>
+        <div class="game-container">
+        <h2 id="openBtn">
+            <i class="fa-regular fa-keyboard"></i>
+            <i class="fa-solid fa-keyboard"></i>
+            <i class="fa-regular fa-keyboard"></i>
+            <i class="fa-solid fa-keyboard"></i>
+            <i class="fa-regular fa-keyboard"></i>
+        </h2>
+        <h1 id="headDisplay">TEST YOUR SPEED!</h1>
+            <div class="stats">
+                <div>Time: <span id="timer">99</span>s</div>
+                <div>Hits: <span id="wordCount">0</span>/<span id="totalWords">0</span></div>
+            </div>
+            <div class="word-display" id="wordDisplay"></div>
+            <div><input type="text" class="word-input" id="wordInput"></div>
+            <button id="resetBtn" class="reset-btn">RESET GAME</button>
+        </div>
+        <div id="scoreModal" class="score-modal">
+            <div class="score-box">
+                <h2>Score Board</h2>
+                <ul id="scoreList"></ul>
+                <button id="closeScore">Close</button>
+            </div>
+        </div>
+        <button id="openScoreBtn">View Scores</button>
+    </body>
 </html>
 
  
