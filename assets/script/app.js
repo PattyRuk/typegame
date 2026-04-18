@@ -1,24 +1,17 @@
-'use strict';
+ 'use strict';
 
+// score class
 class Score {
-    #date;
-    #hits;
-    #percentage;
-
     constructor(hits, percentage) {
-        this.#date = new Date();
-        this.#hits = hits;
-        this.#percentage = percentage;
+        this.date = new Date().toLocaleDateString();
+        this.hits = hits;
+        this.percentage = percentage;
     }
 
-    get date() { return this.#date.toLocaleString()}
-    get hits() { return this.#hits;}
-    get percentage() { return this.#percentage;}
     get summary() {
-        return `Date: ${this.date} \nFinal Score: ${this.#hits} hits (${this.#percentage}% accuracy)`;
+        return `Final Score On ${this.date}: ${this.hits} hits (${this.percentage}% accuracy)`;
     }
 }
-
 
 const wordList = 
 ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 
@@ -48,7 +41,7 @@ const colors = [
 ];
 
 const wordDisplay = document.getElementById('wordDisplay');
-const headDisplay = document.getElementById('headDisplay')
+const headDisplay = document.getElementById('headDisplay');
 const scoreDisplay = document.getElementById('score');
 const timeDisplay = document.getElementById('timer');
 const hitsDisplay = document.getElementById('wordCount');
@@ -61,13 +54,18 @@ const popup = document.getElementById('popUp');
 const open = document.getElementById('openBtn');
 const close = document.getElementById('closeBtn');
 
+// Scoreboard display
+const openScoreBtn = document.getElementById("openScoreBtn");
+const closeScoreBtn = document.getElementById("closeScore");
+const scoreSidebar = document.getElementById("scoreSidebar");
+const scoreList = document.getElementById("scoreList");
+
 let randomWords = [];
 let userPlaying = false;
 let currentIndex = 0;
 let hits = 0;
 let timeLeft = 99;
 let timer = null;
-
 
 // Game Sound
 const bgMusic = new Audio("./assets/media/game-sound.mp3");
@@ -92,7 +90,7 @@ function updateTimer() {
 //Next Word function
 function nextWord() {
     if (currentIndex < randomWords.length) { 
-        wordDisplay.innerText = randomWords[currentIndex];
+        wordDisplay.innerHTML = randomWords[currentIndex].split('').map(letter => `<span>${letter}</span>`).join('');
         wordDisplay.style.color = 'var(--primary-text-color)' ; 
         hitsDisplay.innerText = currentIndex; 
         changeBackground(); // change color on new words
@@ -115,7 +113,7 @@ function compareInput() {
     }
 
     const currentWord = randomWords[currentIndex];
-    const inputValue = wordInput.value.toLowerCase().trim(' ');
+    const inputValue = wordInput.value;
 
     if (inputValue === currentWord) {
         wordInput.placeholder = "";
@@ -125,15 +123,59 @@ function compareInput() {
         nextWord();
         return;
     }
+
     
-    if (currentWord.startsWith(inputValue)) {
-    // Input matches the start of the word
-    wordDisplay.style.color = 'var(--success)';
-    } else {
-    // Input does not match
-    wordDisplay.style.color = 'var(--error)';
-    }
+    const letters = wordDisplay.querySelectorAll("span");
+    letters.forEach((letter, index) => {
+        const char = inputValue[index];
+
+        if (char == null) {
+            letter.style.color = "var(--primary-text-color)";
+        } else if (char === letter.textContent) {
+            letter.style.color = "var(--success)";
+        } else {
+            letter.style.color = "var(--error)";
+        }
+    });
 }
+
+// ARRAY OF SCORES
+function saveScore(scoreObj) {
+    let scores = JSON.parse(localStorage.getItem("scores")) || [];
+    scores.push(scoreObj); // adding object to array
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+
+function getScores() {
+    return JSON.parse(localStorage.getItem("scores")) || [];
+}
+
+function renderScores() {
+    scoreList.innerHTML = "";
+
+    const scores = getScores();
+
+    if (!scores.length) {
+        scoreList.innerHTML = "<li>No scores yet</li>";
+        return;
+    }
+
+    scores.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = `${s.date} | ${s.hits} hits | ${s.percentage}%`;
+        scoreList.appendChild(li);
+    });
+}
+
+// Close modal
+openScoreBtn.addEventListener("click", () => {
+    renderScores();
+    scoreSidebar.classList.add("active");
+});
+
+closeScoreBtn.addEventListener("click", () => {
+    scoreSidebar.classList.remove("active");
+});
 
 // Background change
 function changeBackground() {
@@ -186,6 +228,8 @@ function endGame(message) {
     const accuracy = Math.round((currentIndex / wordList.length) * 100);
     // Create the Score object
     const finalScore = new Score(currentIndex, accuracy);
+    saveScore(finalScore);
+
     // Use the object to update the head display
     headDisplay.innerText = `${finalScore.summary}`;
 
@@ -194,11 +238,6 @@ function endGame(message) {
     // to play end-game sound.
     endSound.currentTime = 0;
     endSound.play();
-
-    // retores music after end-game sound.
-    endSound.onended = () => {
-        bgMusic.volume = 0.2;
-    };
 }
 
 // Show popup
@@ -210,7 +249,6 @@ open.addEventListener('click', () => {
 close.addEventListener('click', () => {
   popup.style.display = 'none';
 });
-
 
 //Starting Game
 wordInput.addEventListener('input', compareInput);
