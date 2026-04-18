@@ -211,7 +211,6 @@ close.addEventListener('click', () => {
   popup.style.display = 'none';
 });
 
-
 //Starting Game
 wordInput.addEventListener('input', compareInput);
 resetBtn.addEventListener('click', resetGame);
