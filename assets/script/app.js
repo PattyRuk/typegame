@@ -3,7 +3,7 @@
 // score class
 class Score {
     constructor(hits, percentage) {
-        this.date = new Date().toLocaleDateString();
+        this.date = new Date().toLocaleString();
         this.hits = hits;
         this.percentage = percentage;
     }
@@ -37,7 +37,7 @@ const colors = [
     "#2a2145",
     "#312750",
     "#231b3b",
-    "#3a2e5c"
+    "#3d2f65"
 ];
 
 const wordDisplay = document.getElementById('wordDisplay');
@@ -68,7 +68,7 @@ let timeLeft = 99;
 let timer = null;
 
 // Game Sound
-const bgMusic = new Audio("./assets/media/game-sound.mp3");
+const bgMusic = new Audio("./assets/media/game-sound2.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
 
@@ -231,7 +231,7 @@ function endGame(message) {
     wordInput.disabled = true;
     wordDisplay.innerText = "GAME OVER!";
     wordDisplay.style.color = 'var(--error)';
-    headDisplay.style.fontSize = '2.5rem';
+    headDisplay.style.fontSize = '2rem';
     // Calculate final accuracy percentage
     const accuracy = Math.round((currentIndex / wordList.length) * 100);
     // Create the Score object
@@ -240,6 +240,10 @@ function endGame(message) {
 
     // Use the object to update the head display
     headDisplay.innerText = `${finalScore.summary}`;
+
+    // pop up score list
+    renderScores();
+    scoreSidebar.classList.add("active");
 
     // to lower background music, not stop.
     bgMusic.volume = 0.2;

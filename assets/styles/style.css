@@ -7,7 +7,7 @@
     --background-color: #1c1c4c;
     --background-color2: #130339;
     --background-text: rgba(15, 23, 42, 0.6);
-    --app-color1: #6b2991;
+    --app-color1: #497eba;
     --app-color2: #007bff;
     --hover-color: #1996d4;
     --primary-color: #6366f1;
@@ -52,7 +52,7 @@
 /* Header Section */
 #header {
     font-size: 5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 2rem;
 }
 
@@ -71,6 +71,7 @@ h2 {
     margin-top: 0rem;
     margin-bottom: 0rem;
     color: var(--primary-color);
+    font-weight: 800;
 }
 
 /* Icons */
@@ -297,7 +298,7 @@ h3 {
     position: fixed;
     top: 0;
     right: -300px;
-    width: 280px;
+    width: 300px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -325,9 +326,13 @@ h3 {
 #closeScore {
     background: none;
     border: none;
-    color: #fff;
+    color: var(--primary-text-color);
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+#closeScore i {
+    font-size: 1.6rem;
 }
 
 #scoreList {
@@ -341,5 +346,16 @@ h3 {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#scoreList li:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#scoreList li:hover {
+    animation: glowCycle 3s infinite;
+    transform: translateY(-4px);
+    cursor: pointer;
 }
