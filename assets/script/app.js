@@ -181,13 +181,11 @@ closeScoreBtn.addEventListener("click", () => {
 function changeBackground() {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-    const container = document.querySelector(".container");
+    const container = document.querySelector(".game-container");
 
     container.style.background = randomColor;
 
-    // Match reset button with background
-    resetBtn.style.background = randomColor;
-    resetBtn.style.borderColor = randomColor;
+
     // match close button
     close.style.background = randomColor;
     close.style.borderColor = randomColor;

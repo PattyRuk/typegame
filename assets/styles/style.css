@@ -21,42 +21,47 @@
 
 .container {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: var(--background-color2);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../media/purplegif3.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--primary-text-color);
     align-content: center;
     place-items: center;
     text-align: center;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 40px;
+    padding: 30px;
     transition: background 0.5s ease;
 }
+
+
+
 
 .game-container {
     background: var(--background-color);
     border: 1px solid var(--background-color);
     padding: 1.8rem;
-    border-radius: 24px;
+    border-radius: 20px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    width: 85%;
-    max-width: 600px;
+    max-width: 550px;
     text-align: center;
 }
 
 
 /* Header Section */
 #header {
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 h1 {
-    font-weight: 700;
+    font-weight: 800;
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background: linear-gradient(to right, var(--app-color2), var(--primary-color), var(--hover-color));
-    -webkit-background-clip: text; /* this was used for text background color(chatgpt assisted) */
+    -webkit-background-clip: text;    /* this was used for text background color(chatgpt assisted) */
     background-clip: text;
     color: transparent;
     text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
@@ -73,7 +78,9 @@ h2 {
     font-size: 6rem;
 }
 
-.fa-keyboard:hover, #header:hover {
+.fa-keyboard:hover,
+#header:hover,
+h1:hover {
     animation: glowCycle 3s infinite;
     transform: translateY(-4px);
     cursor: pointer;
@@ -81,23 +88,27 @@ h2 {
 
 @keyframes glowCycle {
     0% {
-        color: var(--app-color1); 
+        color: var(--app-color1);
         text-shadow: 0 0 5px var(--app-color1), 0 0 10px var(--app-color1);
     }
+
     25% {
-        color: var(--app-color2); 
+        color: var(--app-color2);
         text-shadow: 0 0 5px var(--app-color2), 0 0 10px var(--app-color2);
     }
+
     50% {
-        color: var(--primary-color); 
+        color: var(--primary-color);
         text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
     }
+
     75% {
-        color: var(--hover-color); 
+        color: var(--hover-color);
         text-shadow: 0 0 5px var(--hover-color), 0 0 10px var(--hover-color);
     }
+
     100% {
-        color: var(--app-color1); 
+        color: var(--app-color1);
         text-shadow: 0 0 5px var(--app-color1), 0 0 10px var(--app-color1);
     }
 }
@@ -109,7 +120,7 @@ h2 {
     gap: 2rem;
     margin-bottom: 2rem;
     font-weight: 800;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--secondary-text-color);
 }
 
@@ -118,7 +129,7 @@ h2 {
 }
 
 .word-display {
-    font-size: 3.5rem;
+    font-size: 3rem;
     min-height: 80px;
     font-weight: 700;
 }
@@ -129,14 +140,16 @@ h2 {
     border: 2px solid var(--bg2);
     border-radius: 12px;
     color: var(--primary-text-color);
-    padding: 1.5rem;
-    width: 100%;
+    padding: 1.2rem;
+    width: 90%;
     box-sizing: border-box;
     outline: none;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 2rem;
+    margin-top: 0.5rem;
+
 }
 
 .word-input:focus,
@@ -145,48 +158,99 @@ h2 {
 }
 
 /* Button */
-.reset-btn, #closeBtn {
+.reset-btn,
+#closeBtn {
     background: var(--primary-color);
     color: var(--primary-text-color);
     border: 1px solid var(--primary-color);
     padding: 1rem;
     border-radius: 12px;
     font-weight: 800;
+    font-size: 1.5rem;
     width: 20rem;
     margin-top: 1rem;
     cursor: pointer;
-    transition: all 0.3s;
     letter-spacing: 1.3px;
     transition: all 0.3s ease;
 }
 
-.reset-btn:hover, #closeBtn:hover {
+.reset-btn:hover,
+#closeBtn:hover {
     background: transparent;
     color: var(--primary-color);
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
     transform: translateY(-4px);
 }
 
+
+
 /* Pop-Up */
 #popUp {
-    display:none; 
-    position:fixed; 
-    top:50%; 
-    left:50%; 
-    transform:translate(-50%, -30%); 
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
     background: var(--background-color);
     border: 1px solid var(--background-color);
     padding: 1.8rem;
     border-radius: 24px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     width: 70%;
-    max-width: 550px;
-    font-size: 2rem;
+    max-width: 500px;
+    z-index: 1000; /* Ensures it stays on top of other content */
 }
 
 p {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
+}
+
+p:hover {
+    color: var(--hover-color);
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* icon animation*/
+.animated-icon {
+    display: inline-block;
+    animation: floatUpDown 1s ease-in-out infinite alternate;
+}
+
+/* Stagger animation delays for a wave effect */
+.animated-icon:nth-child(1) {
+    animation-delay: 0.0s;
+}
+
+.animated-icon:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.animated-icon:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.animated-icon:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.animated-icon:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-6px);
+    }
 }
 
 /* Modal styling */
