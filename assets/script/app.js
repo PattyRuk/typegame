@@ -175,7 +175,7 @@ function renderScores() {
 
     scores.forEach((s, index )=> {
         const li = document.createElement("li");
-        li.textContent = `#${index + 1} ${s.date} | ${s.hits} hits | ${s.percentage}%`;
+        li.innerHTML = `<span>#${index + 1} - ${s.date}</span> <strong> ${s.hits} hits | ${s.percentage}% </strong>`;
         scoreList.appendChild(li);
     });
 }
