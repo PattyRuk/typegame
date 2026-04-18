@@ -173,9 +173,9 @@ function renderScores() {
         return;
     }
 
-    scores.forEach(s => {
+    scores.forEach((s, index )=> {
         const li = document.createElement("li");
-        li.textContent = `${s.date} | ${s.hits} hits | ${s.percentage}%`;
+        li.textContent = `#${index + 1} ${s.date} | ${s.hits} hits | ${s.percentage}%`;
         scoreList.appendChild(li);
     });
 }
