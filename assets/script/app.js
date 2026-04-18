@@ -90,7 +90,7 @@ function updateTimer() {
 //Next Word function
 function nextWord() {
     if (currentIndex < randomWords.length) { 
-        wordDisplay.innerText = randomWords[currentIndex];
+        wordDisplay.innerHTML = randomWords[currentIndex].split('').map(letter => `<span>${letter}</span>`).join('');
         wordDisplay.style.color = 'var(--primary-text-color)' ; 
         hitsDisplay.innerText = currentIndex; 
         changeBackground(); // change color on new words
@@ -123,10 +123,19 @@ function compareInput() {
         nextWord();
         return;
     }
-    
-    wordDisplay.style.color = target.startsWith(inputValue)
-        ? 'var(--success)'
-        : 'var(--error)';
+
+    const letters = wordDisplay.querySelectorAll("span");
+    letters.forEach((letter, index) => {
+        const char = inputValue[index];
+
+        if (char == null) {
+            letter.style.color = "var(--primary-text-color)";
+        } else if (char === letter.textContent) {
+            letter.style.color = "var(--success)";
+        } else {
+            letter.style.color = "var(--error)";
+        }
+    });
 }
 
 // ARRAY OF SCORES
