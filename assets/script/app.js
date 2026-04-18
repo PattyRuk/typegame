@@ -113,7 +113,7 @@ function compareInput() {
     }
 
     const currentWord = randomWords[currentIndex];
-    const inputValue = wordInput.value;
+    const inputValue = wordInput.value.toLowerCase().trim(' ');
 
     if (inputValue === currentWord) {
         wordInput.placeholder = "";
