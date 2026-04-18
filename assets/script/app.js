@@ -143,7 +143,20 @@ function compareInput() {
 function saveScore(scoreObj) {
     let scores = JSON.parse(localStorage.getItem("scores")) || [];
     scores.push(scoreObj); // adding object to array
-    localStorage.setItem("scores", JSON.stringify(scores));
+
+    // Sort: Highest hits first. If hits are equal, highest percentage first.
+    scores.sort((a, b) => {
+    if (b.hits !== a.hits) {
+        return b.hits - a.hits;
+    }
+    return b.percentage - a.percentage;
+    });
+    
+    // Keep only 9 scores
+    const topScores = scores.slice(0, 9);
+    
+
+    localStorage.setItem("scores", JSON.stringify(topScores));
 }
 
 function getScores() {
@@ -182,10 +195,9 @@ function changeBackground() {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     const container = document.querySelector(".game-container");
-    const popUp = document.getElementById("popUp");
-    
+
     container.style.background = randomColor;
-    popUp.style.background = randomColor;
+    popup.style.background = randomColor;
 
 }
 
