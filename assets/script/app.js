@@ -182,13 +182,11 @@ function changeBackground() {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     const container = document.querySelector(".game-container");
-
+    const popUp = document.getElementById("popUp");
+    
     container.style.background = randomColor;
+    popUp.style.background = randomColor;
 
-
-    // match close button
-    close.style.background = randomColor;
-    close.style.borderColor = randomColor;
 }
 
 // Reset Game
